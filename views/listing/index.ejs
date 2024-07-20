@@ -1,0 +1,45 @@
+
+<style>
+  #filters{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .filter{
+    margin-right: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    opacity: 0.7;
+  }
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  .filter p{
+    font-size: 0.8rem;
+  }
+</style>
+
+  <% layout('/layouts/header') -%>
+  <body> 
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <% for(let listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col listing-card">
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-image" style="height: 20rem;">
+          <div class="card-img-overlay">abcd</div>
+          <div class="card-body">
+            <p class="card-text">
+              <b>Created by : </b><%= listing.title %> <br>
+              <%= listing.date.toLocaleDateString(undefined, {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+            });%><br>
+            </p>
+          </div>
+        </div>
+      </a>
+        <% } %>
+    </div>    
+  </body>
+<!-- </html> -->

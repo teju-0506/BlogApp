@@ -1,0 +1,29 @@
+<% layout('/layouts/header') -%>
+<div class="row">
+  <div class="col-8 offset-2">
+    <br>
+    <h3>Edit your Listing</h3>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
+        <div class="invalid-feedback">Please enter valid Title</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" class="form-control" required>
+          <%=listing.description %></textarea>
+          <div class="invalid-feedback">Please enter a short description</div>
+      </div>
+      <div>
+        <img src="<%= imageUrl %>" alt="">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload new Image</label>
+        <input name="listing[image]" value="<%= listing.image %>" type="file" class="form-control"/>
+        <div class="invalid-feedback">Please enter image url</div>
+      </div> 
+      <button class="btn btn-dark add-btn">Edit</button>
+    </form>
+  </div>
+</div>
